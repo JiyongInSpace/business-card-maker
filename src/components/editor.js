@@ -3,13 +3,17 @@ import styled from 'styled-components';
 import CardAddForm from './card_add_form';
 import CardEditForm from './card_edit_form';
 
-const Editor = ({cards, addCard}) => {
+const Editor = ({cards, addCard, updateCard, deleteCard}) => {
 
 
     return <Container>
         <TabTitle>Card Maker</TabTitle>
-        {cards.map(card => {
-            return <CardEditForm key={`editor${card.id}`} card={card} />;
+        {Object.keys(cards).map(key => {
+            return <CardEditForm 
+                        key={`editor${key}`}
+                        card={cards[key]} 
+                        updateCard={updateCard}
+                        deleteCard={deleteCard}/>;
         })}
         <CardAddForm onSubmit={addCard}/>
     </Container>;

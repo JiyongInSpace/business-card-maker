@@ -8,8 +8,8 @@ const Preview = ({cards}) => {
     return <Container>
         <TabTitle>Card Preview</TabTitle>
         <Cards>
-            {cards.map(card => {
-                return <Card key={`card${card.id}`} card={card} />;
+            {Object.keys(cards).map(key => {
+                return <Card key={`card${key}`} card={cards[key]} />;
             })}
         </Cards>
     </Container>;

@@ -7,8 +7,8 @@ import Editor from './editor';
 import Preview from './preview';
 
 const Maker = ({authService}) => {
-    const [cards, setCards] = useState([
-        {
+    const [cards, setCards] = useState({
+        '1': {
             id: '1',
             name: 'Jiyong',
             company: 'Samsung',
@@ -19,7 +19,7 @@ const Maker = ({authService}) => {
             fileName: 'ellie',
             fileURL: null
         },
-        {
+        '2':{
             id: '2',
             name: 'Jiyong',
             company: 'Samsung2',
@@ -30,7 +30,7 @@ const Maker = ({authService}) => {
             fileName: 'ellie',
             fileURL: null
         },
-        {
+        '3':{
             id: '3',
             name: 'Jiyong',
             company: 'Samsung3',
@@ -41,13 +41,20 @@ const Maker = ({authService}) => {
             fileName: 'ellie',
             fileURL: null
         }
-    ]);
+    });
     const history = useHistory();
     const onLogout = () => {
         authService.logout();
     };
-    const addCard = (card) => {
-        const updated = [...cards, card];
+    
+    const createOrUpdateCard = (card) => {
+        const updated = {...cards};
+        updated[card.id] = card;
+        setCards(updated);
+    }
+    const deleteCard = (card) => {
+        const updated = {...cards};
+        delete updated[card.id];
         setCards(updated);
     }
     useEffect(() => {
@@ -61,7 +68,10 @@ const Maker = ({authService}) => {
     <Container>
         <Header onLogout={onLogout}/>
         <InnerContainer>
-            <Editor cards={cards} addCard={addCard}/>
+            <Editor cards={cards} 
+                    addCard={createOrUpdateCard} 
+                    updateCard={createOrUpdateCard}
+                    deleteCard={deleteCard}/>
             <Preview cards={cards} />
         </InnerContainer>
         <Footer />
@@ -85,16 +95,4 @@ const InnerContainer = styled.div`
     &::-webkit-scrollbar{width:5px;}
     &::-webkit-scrollbar-thumb{background-color: blueviolet;}
     &::-webkit-scrollbar-track{background-color: lightsteelblue;}
-`;
-const Tab = styled.section`
-    width: 50%; height: 100%;
-    @media ${props => props.theme.tablet}{
-        width: 100%;
-    }
-`;
-const TabTitle = styled.h4`
-    text-align: center;
-    padding: 20px;
-    color: navy;
-    font-size: 1.5em;
 `;

@@ -1,29 +1,73 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Button from './button';
 import ImageFileInput from './image_file_input';
 
-const CardEditForm = ({card}) => {
-    const { name, company, theme, title, email, message, fileName, fileURL } = card;
-    const onSubmit = () => {
+const CardEditForm = ({card, updateCard, deleteCard}) => {
+    const nameRef = useRef();
+    const companyRef = useRef();
+    const themeRef = useRef();
+    const titleRef = useRef();
+    const emailRef = useRef();
+    const messageRef = useRef();
 
+    const { name, company, theme, title, email, message, fileName, fileURL } = card;
+    const handleChange = (e) => {    
+        if(e.currentTarget == null){
+            return;
+        }
+        e.preventDefault();
+        updateCard({
+            ...card, [e.currentTarget.name]: e.currentTarget.value
+        })
+    }
+    const handleSubmit = (e) => {
+        deleteCard(card);
     }
     return (
         <Form>
-            <Input type="text" name="name" value={name} />
-            <Input type="text" name="company" value={company} />
-            <Select name="theme" value={theme}>
+            <Input 
+                ref={nameRef} 
+                type="text" 
+                name="name" 
+                value={name} 
+                onChange={handleChange}/>
+            <Input 
+                ref={companyRef} 
+                type="text" 
+                name="company" 
+                value={company} 
+                onChange={handleChange}/>
+            <Select 
+                ref={themeRef} 
+                name="theme" 
+                value={theme} 
+                onChange={handleChange}>
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
                 <option value="navy">navy</option>
             </Select>
-            <Input type="text" name="title" value={title} />
-            <Input type="text" name="email" value={email} />
-            <Textarea name="message" value={message} />
+            <Input 
+                ref={titleRef} 
+                type="text" 
+                name="title" 
+                value={title} 
+                onChange={handleChange}/>
+            <Input 
+                ref={emailRef} 
+                type="text" 
+                name="email" 
+                value={email} 
+                onChange={handleChange}/>
+            <Textarea 
+                ref={messageRef} 
+                name="message" 
+                value={message} 
+                onChange={handleChange}/>
             <ImageContainer>
                 <ImageFileInput />
             </ImageContainer>
-            <Button name='Delete' onClick={onSubmit} />
+            <Button name='Delete' onClick={handleSubmit}/>
         </Form>
     );
 };
