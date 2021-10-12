@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from './header';
 import Footer from './footer'
@@ -7,10 +7,49 @@ import Editor from './editor';
 import Preview from './preview';
 
 const Maker = ({authService}) => {
+    const [cards, setCards] = useState([
+        {
+            id: '1',
+            name: 'Jiyong',
+            company: 'Samsung',
+            theme: 'dark',
+            title: 'developer',
+            email: 'blaziken@naver.com',
+            message: 'go for it',
+            fileName: 'ellie',
+            fileURL: null
+        },
+        {
+            id: '2',
+            name: 'Jiyong',
+            company: 'Samsung2',
+            theme: 'light',
+            title: 'developer',
+            email: 'blaziken@naver.com',
+            message: 'go for it',
+            fileName: 'ellie',
+            fileURL: null
+        },
+        {
+            id: '3',
+            name: 'Jiyong',
+            company: 'Samsung3',
+            theme: 'navy',
+            title: 'developer',
+            email: 'blaziken@naver.com',
+            message: 'go for it',
+            fileName: 'ellie',
+            fileURL: null
+        }
+    ]);
     const history = useHistory();
     const onLogout = () => {
         authService.logout();
     };
+    const addCard = (card) => {
+        const updated = [...cards, card];
+        setCards(updated);
+    }
     useEffect(() => {
         authService.onAuthChange(user => {
             if(!user){
@@ -22,8 +61,8 @@ const Maker = ({authService}) => {
     <Container>
         <Header onLogout={onLogout}/>
         <InnerContainer>
-            <Editor></Editor>
-            <Preview></Preview>
+            <Editor cards={cards} addCard={addCard}/>
+            <Preview cards={cards} />
         </InnerContainer>
         <Footer />
     </Container>
