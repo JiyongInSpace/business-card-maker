@@ -39,39 +39,47 @@ const CardEditForm = ({FileInput, card, updateCard, deleteCard}) => {
                 type="text" 
                 name="name" 
                 value={name} 
-                onChange={handleChange}/>
+                onChange={handleChange}
+                placeholder="Name"/>
             <Input 
                 ref={companyRef} 
                 type="text" 
                 name="company" 
                 value={company} 
-                onChange={handleChange}/>
+                onChange={handleChange}
+                placeholder="Company"/>
             <Select 
                 ref={themeRef} 
                 name="theme" 
                 value={theme} 
                 onChange={handleChange}>
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="navy">navy</option>
+                <option value="light">Business_Light</option>
+                <option value="dark">Business_Dark</option>
+                <option value="navy">Business_Navy</option>
+                <option value="sr_blue">SRcard_Blue</option>
+                <option value="sr_red">SRcard_Red</option>
+                <option value="chulip">Chu-lip</option>
             </Select>
             <Input 
                 ref={titleRef} 
                 type="text" 
                 name="title" 
                 value={title} 
-                onChange={handleChange}/>
+                onChange={handleChange}
+                placeholder="Job Title"/>
             <Input 
                 ref={emailRef} 
                 type="text" 
                 name="email" 
                 value={email} 
-                onChange={handleChange}/>
+                onChange={handleChange}
+                placeholder="Email"/>
             <Textarea 
                 ref={messageRef} 
                 name="message" 
                 value={message} 
-                onChange={handleChange}/>
+                onChange={handleChange}
+                placeholder="Message"/>
             <ImageContainer>
                 <FileInput name={fileName} onFileChange={onFileChange}/>
             </ImageContainer>

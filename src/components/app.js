@@ -1,7 +1,7 @@
 import GlobalStyles from "./global_styled";
-import Login from "./login";
+import Login from "../page/login";
 import { HashRouter as Router, Route } from 'react-router-dom';
-import Maker from "./maker";
+import Maker from "../page/maker";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
 

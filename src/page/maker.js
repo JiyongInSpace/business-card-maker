@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Header from './header';
-import Footer from './footer'
+import Header from '../components/header';
+import Footer from '../components/footer';
 import { useHistory } from 'react-router';
-import Editor from './editor';
-import Preview from './preview';
+import Editor from '../components/editor';
+import Preview from '../components/preview';
 
 const Maker = ({FileInput, authService, cardRepository}) => {
     const history = useHistory();
@@ -20,14 +20,12 @@ const Maker = ({FileInput, authService, cardRepository}) => {
         const updated = {...cards};
         updated[card.id] = card;
         setCards(updated);
-        console.log(updated);
         cardRepository.saveCard(userId, updated);
     }
     const deleteCard = (card) => {
         const updated = {...cards};
         delete updated[card.id];
         setCards(updated);
-        console.log(updated);
         cardRepository.removeCard(userId, updated);
     }
     useEffect(() => {

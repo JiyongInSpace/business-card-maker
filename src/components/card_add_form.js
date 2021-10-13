@@ -43,11 +43,14 @@ const CardAddForm = ({FileInput, onSubmit}) => {
             <Input ref={nameRef} type="text" name="name" placeholder="Name" required />
             <Input ref={companyRef} type="text" name="company" placeholder="Company" />
             <Select ref={themeRef} name="theme" placeholder="Theme">
-                <option placeholder="light">light</option>
-                <option placeholder="dark">dark</option>
-                <option placeholder="navy">navy</option>
+                <option value="light">Business_Light</option>
+                <option value="dark">Business_Dark</option>
+                <option value="navy">Business_Navy</option>
+                <option value="sr_blue">SRcard_Blue</option>
+                <option value="sr_red">SRcard_Red</option>
+                <option value="chulip">Chu-lip</option>
             </Select>
-            <Input ref={titleRef} type="text" name="title" placeholder="Title" />
+            <Input ref={titleRef} type="text" name="title" placeholder="Job Title" />
             <Input ref={emailRef} type="text" name="email" placeholder="Email" />
             <Textarea ref={messageRef} name="message" placeholder="Message" />
             <ImageContainer>

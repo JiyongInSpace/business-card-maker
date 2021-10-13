@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import Header from './header';
-import Footer from './footer';
+import Header from '../components/header';
+import Footer from '../components/footer';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
