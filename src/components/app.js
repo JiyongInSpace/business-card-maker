@@ -5,7 +5,7 @@ import Maker from "./maker";
 import theme from "./theme";
 import { ThemeProvider } from "styled-components";
 
-function App({authService}) {
+function App({FileInput, authService, cardRepository}) {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -14,7 +14,7 @@ function App({authService}) {
             <Login authService={authService} />
           </Route>
           <Route exact path="/maker">
-            <Maker authService={authService} />
+            <Maker FileInput={FileInput} authService={authService} cardRepository={cardRepository}/>
           </Route>
         </Router>
         <GlobalStyles />

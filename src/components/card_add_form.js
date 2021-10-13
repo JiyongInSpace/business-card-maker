@@ -1,9 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from './button';
-import ImageFileInput from './image_file_input';
 
-const CardAddForm = ({onSubmit}) => {
+const CardAddForm = ({FileInput, onSubmit}) => {
     const formRef = useRef();
     const nameRef = useRef();
     const companyRef = useRef();
@@ -11,6 +10,13 @@ const CardAddForm = ({onSubmit}) => {
     const titleRef = useRef();
     const emailRef = useRef();
     const messageRef = useRef();
+    const [file, setFile] = useState({fileName: null, fileURL: null});
+    const onFileChange = file => {
+        setFile({
+            fileName: file.name,
+            fileURL: file.url,
+        })
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,15 +28,19 @@ const CardAddForm = ({onSubmit}) => {
             title: titleRef.current.value || '',
             email: emailRef.current.value || '',
             message: messageRef.current.value || '',
-            fileName: '',
-            fileURL: '',
+            fileName: file.fileName || '',
+            fileURL: file.fileURL || '',
         };
         formRef.current.reset();
+        setFile({
+            fileName: null,
+            fileURL: null,
+        })
         onSubmit(card);
     }
     return (
         <Form ref={formRef}>
-            <Input ref={nameRef} type="text" name="name" placeholder="Name" />
+            <Input ref={nameRef} type="text" name="name" placeholder="Name" required />
             <Input ref={companyRef} type="text" name="company" placeholder="Company" />
             <Select ref={themeRef} name="theme" placeholder="Theme">
                 <option placeholder="light">light</option>
@@ -41,7 +51,7 @@ const CardAddForm = ({onSubmit}) => {
             <Input ref={emailRef} type="text" name="email" placeholder="Email" />
             <Textarea ref={messageRef} name="message" placeholder="Message" />
             <ImageContainer>
-                <ImageFileInput />
+                <FileInput name={file.fileName} onFileChange={onFileChange}/>
             </ImageContainer>
             <Button name='Add' onClick={handleSubmit} />
         </Form>
