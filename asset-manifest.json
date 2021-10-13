@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.js": "/card-maker/static/js/main.a2aea35c.chunk.js",
-    "main.js.map": "/card-maker/static/js/main.a2aea35c.chunk.js.map",
+    "main.js": "/card-maker/static/js/main.1dea949f.chunk.js",
+    "main.js.map": "/card-maker/static/js/main.1dea949f.chunk.js.map",
     "runtime-main.js": "/card-maker/static/js/runtime-main.b35d35f6.js",
     "runtime-main.js.map": "/card-maker/static/js/runtime-main.b35d35f6.js.map",
-    "static/js/2.a75a8e4c.chunk.js": "/card-maker/static/js/2.a75a8e4c.chunk.js",
-    "static/js/2.a75a8e4c.chunk.js.map": "/card-maker/static/js/2.a75a8e4c.chunk.js.map",
+    "static/js/2.72d0e793.chunk.js": "/card-maker/static/js/2.72d0e793.chunk.js",
+    "static/js/2.72d0e793.chunk.js.map": "/card-maker/static/js/2.72d0e793.chunk.js.map",
     "index.html": "/card-maker/index.html",
-    "static/js/2.a75a8e4c.chunk.js.LICENSE.txt": "/card-maker/static/js/2.a75a8e4c.chunk.js.LICENSE.txt"
+    "static/js/2.72d0e793.chunk.js.LICENSE.txt": "/card-maker/static/js/2.72d0e793.chunk.js.LICENSE.txt",
+    "static/media/chulip.4a846319.png": "/card-maker/static/media/chulip.4a846319.png",
+    "static/media/default_logo.8d28673e.png": "/card-maker/static/media/default_logo.8d28673e.png",
+    "static/media/sr_card_blue.e58edb7b.png": "/card-maker/static/media/sr_card_blue.e58edb7b.png",
+    "static/media/sr_card_red.0fea615e.png": "/card-maker/static/media/sr_card_red.0fea615e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b35d35f6.js",
-    "static/js/2.a75a8e4c.chunk.js",
-    "static/js/main.a2aea35c.chunk.js"
+    "static/js/2.72d0e793.chunk.js",
+    "static/js/main.1dea949f.chunk.js"
   ]
 }
